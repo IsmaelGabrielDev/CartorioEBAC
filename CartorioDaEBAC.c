@@ -151,56 +151,76 @@ int deletar() //Definindo função de deletar
 	}
 }
 
-int main()
+int main() //Início do sistema
 {
 	int opcao=0; //Definindo a variável do projeto
 	int laco=1; //Definindo a variável de repetição
+	char senhadigitada[]="a"; //Definindo variavel da senha
+	int comparacao; //Definindo variável de comparação
 	
-	for(laco=1;laco=1;) //Início do laço de repetição
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("\n\t\t\t\t\tCartório de Alunos da EBAC\n\n\n"); //Início do login
+	printf("\tLogin de administrador!\n\n");
+	printf("\tDigite sua senha: "); //Final do login
+	scanf("%s",senhadigitada); //Refere-se a strings
+	
+	comparacao = strcmp(senhadigitada, "admin"); //Comparação para validdar a senha
+	
+	if(comparacao == 0) //Inicio da validação de senha
+	
 	{
 		
-		system("cls"); //Responsavel por limpar a tela do sistema
+		system("cls"); //Armazenando a escolha o usuário
 	
-		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
-	
-		printf("\tCartório de Alunos da EBAC\n\n\n"); //Inicio do menu
-		printf(" Registro de dados dos Alunos associados a Escola EBAC!\n\n\n");
-		printf("\tEscolha a opção desejada do Registro:\n\n"); 
-		printf("\t1 - Registrar novos usuários.\n\n");
-		printf("\t2 - Consultar usuários Registrados.\n\n");
-		printf("\t3 - Deletar usuários Registrados.\n\n");
-		printf("\t4 - Sair do sistema.\n\n");
-		printf(" Opção: "); //Final do menu
-	
-		scanf("%d", &opcao); //Armazenando a escolha o usuário
-	
-		system("cls"); //Responsavel por limpar a tela do sistema
-		
-		switch(opcao) //Definindo função de escolha do cliente
+		for(laco=1;laco=1;) //Início do laço de repetição
 		{
-			case 1: //Início da sessão
-			registro();
-			break;
+	
+			setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+			printf("\n\t-- Cartório de Alunos da EBAC --\n\n\n"); //Inicio do menu
+			printf("\tRegistro de dados dos Alunos associados a Escola EBAC!\n\n\n");
+			printf("\tEscolha a opção desejada do Registro:\n\n"); 
+			printf("\t1 - Registrar novos usuários.\n\n");
+			printf("\t2 - Consultar usuários Registrados.\n\n");
+			printf("\t3 - Deletar usuários Registrados.\n\n");
+			printf("\t4 - Sair do sistema.\n\n");
+			printf("\tOpção: "); //Final do menu
+	
+			scanf("%d", &opcao); //Armazenando a escolha o usuário
+	
+			system("cls"); //Responsavel por limpar a tela do sistema
+		
+			switch(opcao) //Definindo função de escolha do cliente
+			{
+				case 1: //Início da sessão
+				registro();
+				break;
 			
-			case 2:
-			consulta();
-			break;
+				case 2:
+				consulta();
+				break;
 			
-			case 3:
-			deletar();
-			break;
+				case 3:
+				deletar();
+				break;
 			
-			case 4:
-			printf(" Obrigado por utilizar o sistema! \n"); //Informando o usuário
-			return 0; //Finaliza o sitema
-			break;
+				case 4:
+				printf(" Obrigado por utilizar o sistema! \n"); //Informando o usuário
+				return 0; //Finaliza o sistema
+				break;
 			
-			default:
-			printf(" Essa opção não está disponivel, tente outra!\n"); //Informando ao usuário
-			system("pause"); //Pausa a sistema
-			break; //Final da sessão
-		}	
-	} //Final do laço de repetição
-}
+				default:
+				printf(" Essa opção não está disponivel, tente outra!\n"); //Informando ao usuário
+				system("pause"); //Pausa a sistema
+				break; //Final da sessão
+			}	
+		} //Final do laço de repetição
+	} //Final da validação de senha
+	
+	else
+	printf("\n\tSenha incorreta!\n\n"); //Resultado incorreto
+	
+} //Final do sistema
 
 //Inspirado na Aula do Professor Pedro Brocaldi...
