@@ -15,6 +15,7 @@ int registro() //Função responsavel por cadastrar os usuários no sistema
 	
 	printf(" Digite o CPF a ser cadastrado: "); //Coletando informações do usuário
 	scanf("%s",cpf); //Refere-se a strings
+	
 	strcpy(arquivo,cpf); //Responsavel por copiar os valores das string
 	printf("\n"); //Refere-se a pular uma linha
 	
@@ -94,6 +95,8 @@ int registro() //Função responsavel por cadastrar os usuários no sistema
 	fclose(file); //Fecha o arquivo
 	
 	system("pause"); //Pausa a sistema
+	
+	system("cls"); //Limpa a tela
 }
 
 int consulta() //Definindo função de consulta
@@ -123,9 +126,10 @@ int consulta() //Definindo função de consulta
 		printf("\n"); //Refere-se a pular uma linha
 	}
 	
-	printf("\n\n"); //Refere-se a pular uma linha
-	
+	printf("\n\n"); //Refere-se a pular uma linha	
 	system("pause"); //Pausa a sistema
+	
+	system("cls"); //Limpa a tela
 }
 
 int deletar() //Definindo função de deletar
@@ -138,21 +142,37 @@ int deletar() //Definindo função de deletar
 	scanf("%s",cpf); //Refere-se a strings
 	printf("\n"); //Refere-se a pular uma linha
 	
-	remove(cpf); //Função de remover informação da variável
-	
 	FILE *file; //Cria o arquivo no banco de dados
 	file = fopen(cpf,"r"); //Lendo informações contidas na variável
 	
 	if(file == NULL) //Responsavel por analizar e validar questões do usuário
 	{
-		printf(" O usuário não se encontra no sistema!. \n"); //Informando ao usuário
-		printf("\n"); //Refere-se a pular uma linha
+		printf(" O usuário não se encontra mais no sistema!. \n\n"); //Informando ao usuário
 		system("pause"); //Pausa a sistema
 	}
+
+	else
+	{
+		fclose(file); //Fecha o arquivo
+		remove(cpf); //Função de remover informação da variável
+		FILE *file; //Cria o arquivo no banco de dados
+		file = fopen(cpf,"r"); //Lendo informações contidas na variável
+		if(file == NULL) //Responsavel por analizar e validar questões do usuário
+		{
+			printf(" Usuário deletado com sucesso!.\n\n");
+			system("pause"); //Pausa a sistema
+		}
+	}
+	fclose(file); //Fecha o arquivo
+	
+	system("cls"); //Limpa a tela
+
 }
 
 int main() //Início do sistema
 {
+	system("cls"); //Limpa a tela
+	
 	int opcao=0; //Definindo a variável do projeto
 	int laco=1; //Definindo a variável de repetição
 	char senhadigitada[]="a"; //Definindo variavel da senha
@@ -171,7 +191,7 @@ int main() //Início do sistema
 	
 	{
 		
-		system("cls"); //Armazenando a escolha o usuário
+		system("cls"); //Limpa a tela
 	
 		for(laco=1;laco=1;) //Início do laço de repetição
 		{
@@ -206,15 +226,16 @@ int main() //Início do sistema
 				break;
 			
 				case 4:
-				printf(" Obrigado por utilizar o sistema! \n"); //Informando o usuário
+				printf("\n Obrigado por utilizar o sistema! \n\n"); //Informando o usuário
 				return 0; //Finaliza o sistema
 				break;
 			
 				default:
-				printf(" Essa opção não está disponivel, tente outra!\n"); //Informando ao usuário
+				printf("\n Essa opção não está disponivel, tente outra!\n\n"); //Informando ao usuário
 				system("pause"); //Pausa a sistema
-				break; //Final da sessão
-			}	
+				system("cls"); //Limpa a tela
+				break; //Final da sessão	
+			}
 		} //Final do laço de repetição
 	} //Final da validação de senha
 	
